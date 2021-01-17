@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
 // Custom Components
@@ -6,16 +7,19 @@ import Product from "./Product";
 // Others
 import defaultAxios from "utils/axios";
 
-const Products = () => {
+const Products = ({ searchText }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [searchText]);
 
   const getProducts = async () => {
     try {
-      const response = await defaultAxios.get("products");
+      const API_ENDPOINT = searchText
+        ? `products?product_name_like=${searchText}`
+        : "products";
+      const response = await defaultAxios.get(API_ENDPOINT);
       setData(response.data);
     } catch (error) {
       console.log(error);
