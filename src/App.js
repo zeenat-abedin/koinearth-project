@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-import Search from "./components/Search";
+// Custom Components
+import Products from "components/Products/Products";
+import Search from "components/Search";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
@@ -12,6 +14,7 @@ const App = () => {
       <div className="row justify-content-center">
         <div className="col-md-6 ">
           <Search searchText={searchText} setSearchText={setSearchText} />
+          <Products />
         </div>
       </div>
     </div>
