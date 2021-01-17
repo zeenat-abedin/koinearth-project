@@ -1,15 +1,25 @@
-const Search = () => {
+const Search = ({ searchText, setSearchText }) => {
+  const onChange = ({ target: { value } }) => {
+    setSearchText(value);
+  };
+
   return (
     <div className="input-group mb-3">
-      <button className="btn" type="button" id="button-addon1">
-        <i className="bi-alarm"></i>
+      <button
+        className="btn btn-outline-secondary"
+        type="button"
+        id="search-icon"
+      >
+        <i className="bi bi-search"></i>
       </button>
       <input
         type="text"
         className="form-control"
-        placeholder=""
-        aria-label="Example text with button addon"
-        aria-describedby="button-addon1"
+        placeholder="Search"
+        aria-label="Product search"
+        aria-describedby="search-icon"
+        value={searchText}
+        onChange={onChange}
       />
     </div>
   );
